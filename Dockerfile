@@ -3,7 +3,10 @@ FROM node:20-bullseye-slim AS builder
 
 WORKDIR /app
 
-# Install build dependencies for better-sqlite3 (python and build-essential)
+# Set memory limit for Next.js build to fit in Free Tier
+ENV NODE_OPTIONS="--max-old-space-size=450"
+
+# Install build dependencies for better-sqlite3 
 RUN apt-get update && apt-get install -y \
     python3 \
     make \
@@ -22,6 +25,7 @@ FROM node:20-bullseye-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
+ENV NODE_OPTIONS="--max-old-space-size=450"
 
 # Install production binaries (ffmpeg, python, yt-dlp)
 RUN apt-get update && apt-get install -y \
@@ -33,13 +37,11 @@ RUN apt-get update && apt-get install -y \
 RUN pip3 install --no-cache-dir yt-dlp --break-system-packages
 
 COPY --from=builder /app/public ./public
-
-# Use standalone output for smaller image
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
-# Ensure data and downloads folders exist
-RUN mkdir -p data downloads
+# Create data and downloads folder with correct permissions
+RUN mkdir -p data downloads && chmod -R 777 data downloads
 
 EXPOSE 3000
 
