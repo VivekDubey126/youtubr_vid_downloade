@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎥 Youtubr | Premium YouTube Downloader
 
-## Getting Started
+A professional, high-performance web application to extract, convert, and store YouTube videos and audio with a premium glassmorphic dashboard interface.
 
-First, run the development server:
+![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
+![TailwindCSS v4](https://img.shields.io/badge/TailwindCSS-v4-38b2ac?style=flat-square&logo=tailwind-css)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite)
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **🚀 Premium UI**: Stunning glassmorphism dashboard using Apple & Vercel design language.
+- **⚡ Live Progress**: Real-time download percentages using `yt-dlp` stream parsing.
+- **📥 High-Quality Downloads**: Supports 4K (video) and Lossless (MP3/Audio).
+- **💾 Save As Integration**: Directly download from the dashboard to your computer with a native browser "Save As" popup.
+- **📜 Persistent History**: All past downloads are saved locally via SQLite for management.
+- **🐳 Docker Ready**: Pre-configured Dockerfile including `FFmpeg` and `yt-dlp` for easy deployment on Render/Railway.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 💻 Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Frontend**: Next.js 15 (App Router), Framer Motion, TailwindCSS v4, Lucide React, Shadcn UI.
+- **Backend**: Next.js API Routes, better-sqlite3.
+- **Engine**: `yt-dlp` (Core extractor), `FFmpeg` (Audio/Video merging).
+- **Environment**: Node.js 20+.
 
-## Learn More
+## 🛠️ Local Setup
 
-To learn more about Next.js, take a look at the following resources:
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/Vivekdubey126/youtubr_vid_downloader.git
+   cd youtubr_vid_downloader
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Install Dependencies**:
+   ```sh
+   npm install
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Install Core Requirements**:
+   Ensure you have Python, [yt-dlp](https://github.com/yt-dlp/yt-dlp), and [FFmpeg](https://ffmpeg.org/) installed on your machine.
+   ```sh
+   pip install yt-dlp
+   ```
 
-## Deploy on Vercel
+4. **Run Development Server**:
+   ```sh
+   npm run dev
+   ```
+   Visit `http://localhost:3000`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚢 Deployment (Full Stack)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Since this app requires system-level tools (`yt-dlp` & `ffmpeg`), it is best deployed on **Render** or **Railway** using the included `Dockerfile`.
+
+1. Push your code to your GitHub repo: `Vivekdubey126/youtubr_vid_downloader`.
+2. On **Render.com**, create a new **Web Service**.
+3. Connect your repository.
+4. Render will automatically use the `Dockerfile` to install dependencies and deploy the full stack.
+
+---
+
+Crafted with ❤️ by Vivekdubey126
