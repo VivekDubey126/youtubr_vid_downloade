@@ -1,3 +1,12 @@
+---
+title: Youtubr Downloader
+emoji: 📹
+colorFrom: blue
+colorTo: purple
+sdk: docker
+app_port: 3000
+---
+
 # 🎥 Youtubr | Premium YouTube Downloader
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/VivekDubey126/youtubr_vid_downloade)
