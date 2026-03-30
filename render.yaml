@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: youtubr-downloader
+    env: docker
+    plan: free
+    region: oregon
+    healthCheckPath: /api/health # I should probably add this route
+    envVars:
+      - key: PORT
+        value: 3000
+    disk:
+      name: downloads-data
+      mountPath: /app/downloads
+      sizeGB: 1
+    # Note: Free tier doesn't support disks, so we'll just use ephemeral storage
+    # and explain that to the user.

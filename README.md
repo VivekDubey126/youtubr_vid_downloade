@@ -1,11 +1,18 @@
 # 🎥 Youtubr | Premium YouTube Downloader
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/VivekDubey126/youtubr_vid_downloade)
+
 A professional, high-performance web application to extract, convert, and store YouTube videos and audio with a premium glassmorphic dashboard interface.
 
-![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square&logo=next.js)
-![TailwindCSS v4](https://img.shields.io/badge/TailwindCSS-v4-38b2ac?style=flat-square&logo=tailwind-css)
-![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker)
+---
+
+### 🚀 Get Your Active Link (FREE)
+To send a link to your friend for free, click the **"Deploy to Render"** button above. 
+1. Log in with your GitHub account.
+2. Click **"Deploy Web Service"**.
+3. Render will give you a link (like `youtubr.onrender.com`) that you can send to your friend!
+
+---
 
 ## ✨ Features
 
