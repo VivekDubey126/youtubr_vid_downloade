@@ -34,7 +34,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install --no-cache-dir yt-dlp --break-system-packages
+RUN pip3 install --no-cache-dir yt-dlp
 
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
