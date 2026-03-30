@@ -5,6 +5,26 @@ import path from 'path';
 import crypto from 'crypto';
 import fs from 'fs';
 
+// Check for cookies to bypass bot blocks safely
+const getBaseArgs = (): string[] => {
+  // Ultra-secure method: Use Hugging Face Secrets instead of public files
+  if (process.env.YOUTUBE_COOKIES) {
+    const tmpCookiePath = '/tmp/youtube_cookies.txt';
+    try {
+      if (!fs.existsSync(tmpCookiePath)) {
+        fs.writeFileSync(tmpCookiePath, process.env.YOUTUBE_COOKIES);
+      }
+      return ['--cookies', tmpCookiePath];
+    } catch (e) {
+      console.error("Failed to write secure cookies", e);
+    }
+  }
+
+  // Fallback for local testing
+  const cookiePath = path.join(process.cwd(), 'cookies.txt');
+  return fs.existsSync(cookiePath) ? ['--cookies', cookiePath] : [];
+};
+
 // Helper to spawn yt-dlp
 function runYtDlp(args: string[]): Promise<string> {
   return new Promise((resolve, reject) => {
@@ -32,7 +52,7 @@ function runYtDlp(args: string[]): Promise<string> {
 
 export async function fetchMetadata(url: string) {
   try {
-    const output = await runYtDlp(['-j', url]);
+    const output = await runYtDlp([...getBaseArgs(), '-j', url]);
     const parsed = JSON.parse(output);
     return {
       title: parsed.title,
@@ -74,7 +94,7 @@ export function startDownload(
 
   // Run in background and update DB
   new Promise((resolve, reject) => {
-    const process = spawn('yt-dlp', args);
+    const process = spawn('yt-dlp', [...getBaseArgs(), ...args]);
     let finalExt = isAudioOnly ? 'mp3' : 'mp4'; 
     let finalOutputPath = path.join(downloadsDir, `${sanitizedTitle}_${downloadId}.${finalExt}`);
 
