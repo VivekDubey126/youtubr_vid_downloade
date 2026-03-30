@@ -100,7 +100,7 @@ export default function Dashboard() {
       <aside className="w-64 border-r border-white/5 flex flex-col p-4 bg-black/40 backdrop-blur-xl shrink-0">
         <div className="flex items-center gap-2 px-2 py-4 mb-8">
           <div className="w-8 h-8 rounded bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-bold text-white shadow-lg">Y</div>
-          <span className="font-semibold text-lg tracking-wide text-white">Youtubr</span>
+          <span className="font-semibold text-lg tracking-wide text-white">OmniLoad</span>
         </div>
         
         <nav className="flex-1 space-y-2">
@@ -132,13 +132,13 @@ export default function Dashboard() {
           <div className="max-w-3xl mx-auto space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
             <div>
               <h1 className="text-3xl font-bold tracking-tight mb-2 text-white">New Download</h1>
-              <p className="text-white/40">Paste a link to extract video or audio files in high fidelity.</p>
+              <p className="text-white/40">Enter any video link from YouTube, Vimeo, Twitter, or thousands of other platforms.</p>
             </div>
 
             <div className="glass-card p-2 flex gap-2 w-full shadow-2xl">
               <input
                 type="text"
-                placeholder="https://www.youtube.com/watch?v=..."
+                placeholder="https://example.com/video-url..."
                 className="flex-1 bg-transparent border-none outline-none px-4 text-white/80 placeholder:text-white/30 truncate"
                 value={url}
                 onChange={(e) => setUrl(e.target.value)}

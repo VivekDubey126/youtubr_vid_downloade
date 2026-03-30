@@ -44,6 +44,7 @@ function runYtDlp(args: string[]): Promise<string> {
       if (code === 0) {
         resolve(output);
       } else {
+        console.error(`yt-dlp error output: ${errorOutput}`);
         reject(new Error(`yt-dlp exited with code ${code}: ${errorOutput}`));
       }
     });
@@ -52,18 +53,35 @@ function runYtDlp(args: string[]): Promise<string> {
 
 export async function fetchMetadata(url: string) {
   try {
-    const output = await runYtDlp([...getBaseArgs(), '-j', url]);
+    const output = await runYtDlp([...getBaseArgs(), '-j', '--no-playlist', '--geo-bypass', url]);
     const parsed = JSON.parse(output);
+    
+    // For many non-YT sites, 'formats' might be empty or in a different field
+    // But yt-dlp usually populates 'formats'
+    const rawFormats = parsed.formats || [];
+    
+    // If no formats (direct file link), create a dummy format
+    if (rawFormats.length === 0 && (parsed.url || parsed.webpage_url)) {
+       rawFormats.push({
+         format_id: 'default',
+         ext: parsed.ext || 'mp4',
+         resolution: parsed.resolution || 'Auto',
+         filesize: parsed.filesize,
+         vcodec: parsed.vcodec || 'unknown',
+         acodec: parsed.acodec || 'unknown'
+       });
+    }
+
     return {
-      title: parsed.title,
-      id: parsed.id,
-      thumbnail: parsed.thumbnail,
-      formats: parsed.formats
-        .filter((f: any) => f.vcodec !== 'none' || f.acodec !== 'none')
+      title: parsed.title || parsed.webpage_url || 'Unknown Video',
+      id: parsed.id || crypto.randomBytes(4).toString('hex'),
+      thumbnail: parsed.thumbnail || 'https://placehold.co/600x400/111/fff?text=No+Preview',
+      formats: rawFormats
+        .filter((f: any) => f.vcodec !== 'none' || f.acodec !== 'none' || f.format_id === 'default')
         .map((f: any) => ({
           format_id: f.format_id,
           ext: f.ext,
-          resolution: f.resolution || 'audio only',
+          resolution: f.resolution || f.format_note || 'Standard',
           fps: f.fps,
           vcodec: f.vcodec,
           acodec: f.acodec,
@@ -88,13 +106,20 @@ export function startDownload(
   const fileName = `${sanitizedTitle}_${downloadId}.%(ext)s`;
   const outputPath = path.join(downloadsDir, fileName);
 
-  const args = isAudioOnly
-    ? ['-x', '--audio-format', 'mp3', '-o', outputPath, url]
-    : ['-f', formatId, '--merge-output-format', 'mp4', '-o', outputPath, url];
+  const baseArgs = [...getBaseArgs(), '--no-playlist', '--geo-bypass'];
+  
+  let args: string[];
+  if (isAudioOnly) {
+    args = [...baseArgs, '-x', '--audio-format', 'mp3', '-o', outputPath, url];
+  } else {
+    // If formatId is 'default', just let yt-dlp pick or use best
+    const formatSpec = formatId === 'default' ? 'bestvideo+bestaudio/best' : formatId;
+    args = [...baseArgs, '-f', formatSpec, '--merge-output-format', 'mp4', '-o', outputPath, url];
+  }
 
   // Run in background and update DB
   new Promise((resolve, reject) => {
-    const process = spawn('yt-dlp', [...getBaseArgs(), ...args]);
+    const process = spawn('yt-dlp', args);
     let finalExt = isAudioOnly ? 'mp3' : 'mp4'; 
     let finalOutputPath = path.join(downloadsDir, `${sanitizedTitle}_${downloadId}.${finalExt}`);
 

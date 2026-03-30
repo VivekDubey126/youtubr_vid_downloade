@@ -44,3 +44,5 @@ next-env.d.ts
 /data/
 db_test.js
 /downloads/
+
+cookies.txt

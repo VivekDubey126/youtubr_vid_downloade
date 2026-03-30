@@ -1,5 +1,5 @@
 ---
-title: Youtubr Downloader
+title: OmniLoad Downloader
 emoji: 📹
 colorFrom: blue
 colorTo: purple
@@ -7,12 +7,12 @@ sdk: docker
 app_port: 3000
 ---
 
-# 🎥 Youtubr | Premium YouTube Downloader
+# 🎥 OmniLoad | Universal Video Downloader
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/VivekDubey126/youtubr_vid_downloade)
 [![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?repository=github.com/VivekDubey126/youtubr_vid_downloade&type=git)
 
-A professional, high-performance web application to extract, convert, and store YouTube videos and audio with a premium glassmorphic dashboard interface.
+A professional, high-performance web application to extract, convert, and save videos from **ANY website** (YouTube, Vimeo, Twitter, Instagram, etc.) with a premium glassmorphic dashboard interface.
 
 ---
 
@@ -22,13 +22,14 @@ If **Render** is not loading for you (sometimes blocked by ISPs), click the **"D
 1. Click **"Deploy to Koyeb"**.
 2. Log in with your GitHub account.
 3. Click **"Deploy"**.
-4. You will get a link (like `youtubr.koyeb.app`) to share with your friend!
+4. You will get a link (like `omniload.koyeb.app`) to share with your friend!
 
 ---
 
 ## ✨ Features
 
 - **🚀 Premium UI**: Stunning glassmorphism dashboard using Apple & Vercel design language.
+- **⚡ Universal Support**: Download from YouTube, Vimeo, Twitter, Instagram, and 1000+ other sites.
 - **⚡ Live Progress**: Real-time download percentages using `yt-dlp` stream parsing.
 - **📥 High-Quality Downloads**: Supports 4K (video) and Lossless (MP3/Audio).
 - **💾 Save As Integration**: Directly download from the dashboard to your computer with a native browser "Save As" popup.
@@ -46,7 +47,7 @@ If **Render** is not loading for you (sometimes blocked by ISPs), click the **"D
 
 1. **Clone the repository**:
    ```sh
-   git clone https://github.com/Vivekdubey126/youtubr_vid_downloader.git
+   git clone https://github.com/VivekDubey126/youtubr_vid_downloade.git
    cd youtubr_vid_downloader
    ```
 
@@ -71,7 +72,7 @@ If **Render** is not loading for you (sometimes blocked by ISPs), click the **"D
 
 Since this app requires system-level tools (`yt-dlp` & `ffmpeg`), it is best deployed on **Render** or **Railway** using the included `Dockerfile`.
 
-1. Push your code to your GitHub repo: `Vivekdubey126/youtubr_vid_downloader`.
+1. Push your code to your GitHub repo: `VivekDubey126/youtubr_vid_downloade`.
 2. On **Render.com**, create a new **Web Service**.
 3. Connect your repository.
 4. Render will automatically use the `Dockerfile` to install dependencies and deploy the full stack.

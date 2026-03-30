@@ -13,7 +13,7 @@ export default function LandingPage() {
       <nav className="absolute top-0 w-full p-8 flex justify-between items-center z-10 glass border-b-0 border-white/5">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded bg-gradient-to-tr from-purple-500 to-blue-500 flex items-center justify-center font-bold">Y</div>
-          <span className="font-bold tracking-tight text-xl">Youtubr</span>
+          <span className="font-bold tracking-tight text-xl">OmniLoad</span>
         </div>
         <Link href="/dashboard" className="px-5 py-2.5 rounded-full bg-white text-black font-medium hover:bg-gray-100 transition-colors text-sm">
           Go to Dashboard
@@ -32,7 +32,7 @@ export default function LandingPage() {
         </h1>
 
         <p className="text-lg md:text-2xl text-white/40 mb-12 max-w-2xl font-light">
-          The most advanced, high-performance web tool to extract, convert and store videos in pristine quality.
+          The most advanced, high-performance tool to extract, convert and save videos from ANY website in pristine quality.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 items-center">
