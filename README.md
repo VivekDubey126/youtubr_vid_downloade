@@ -1,16 +1,19 @@
 # 🎥 Youtubr | Premium YouTube Downloader
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/VivekDubey126/youtubr_vid_downloade)
+[![Deploy to Koyeb](https://www.koyeb.com/static/images/deploy/button.svg)](https://app.koyeb.com/deploy?repository=github.com/VivekDubey126/youtubr_vid_downloade&type=git)
 
 A professional, high-performance web application to extract, convert, and store YouTube videos and audio with a premium glassmorphic dashboard interface.
 
 ---
 
 ### 🚀 Get Your Active Link (FREE)
-To send a link to your friend for free, click the **"Deploy to Render"** button above. 
-1. Log in with your GitHub account.
-2. Click **"Deploy Web Service"**.
-3. Render will give you a link (like `youtubr.onrender.com`) that you can send to your friend!
+If **Render** is not loading for you (sometimes blocked by ISPs), click the **"Deploy to Koyeb"** button above. It is a great free alternative that works very well in all regions. 
+
+1. Click **"Deploy to Koyeb"**.
+2. Log in with your GitHub account.
+3. Click **"Deploy"**.
+4. You will get a link (like `youtubr.koyeb.app`) to share with your friend!
 
 ---
 
