@@ -10,7 +10,7 @@ If you haven't already, push your code to a GitHub repository:
    git init
    git add .
    git commit -m "Initialize project"
-   git remote add origin YOUR_GITHUB_REPO_URL
+   git remote add origin https://github.com/VivekDubey126/youtubr_vid_downloade.git
    git push -u origin main
    ```
 
